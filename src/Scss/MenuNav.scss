@@ -1,0 +1,30 @@
+.MenuBar {
+  width: auto;
+  height: 90px;
+
+  position: fixed;
+  .MenuNav {
+    height: 70px;
+    display: flex;
+    align-items: center;
+
+    ul {
+      display: flex;
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        padding-left: 10px;
+        padding-right: 10px;
+        list-style: none;
+
+        a {
+          text-decoration-line: none;
+          color: black;
+          font-weight: bold;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}

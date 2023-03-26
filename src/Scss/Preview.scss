@@ -1,0 +1,41 @@
+.Preview {
+  padding-top: 150px;
+  display: flex;
+  align-items: center;
+
+  &-Container {
+    display: flex;
+    width: 100%;
+    height: 800px;
+    .content1 {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      margin-left: 0;
+      div {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        h1 {
+          font-size: 60px;
+        }
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+    .content2 {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      div {
+        height: 700px;
+        img {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

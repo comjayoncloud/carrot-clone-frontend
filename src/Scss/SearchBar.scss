@@ -1,0 +1,27 @@
+.SearchBar {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  &-Container {
+    .SearchForm {
+      display: flex;
+      .mb-3 {
+        .form-control {
+          height: 40px;
+          width: 250px;
+          border: none;
+          background-color: rgb(227, 224, 224);
+          font-size: 14px;
+        }
+      }
+      button {
+        margin-left: 2px;
+        border: none;
+        border-width: 1px;
+        color: black;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+  }
+}

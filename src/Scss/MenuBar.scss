@@ -1,0 +1,27 @@
+.MenuBar {
+  position: fixed;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  background-color: red;
+  //   justify-content: center;
+
+  &-Container {
+    background-color: blue;
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    .Logo {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      img {
+        height: 100%;
+      }
+    }
+  }
+}
