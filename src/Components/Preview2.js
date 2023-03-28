@@ -1,13 +1,10 @@
 import "../Scss/Preview.scss";
-import { useSelector } from "react-redux";
 
 export default function Preview2(props) {
-  //   const a = props.Preview2;
-  console.log(props);
-  const a = useSelector((state) => state.Preview2);
+  const a = props.view;
 
   return (
-    <div className="Preview">
+    <div className={`Preview${a.name}`}>
       <div className="Preview-Container">
         <div className="content2">
           <div>

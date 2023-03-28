@@ -1,10 +1,11 @@
 import "../Scss/Preview.scss";
 
 export default function Preview(props) {
-  const a = props.Preview;
+  const a = props.view;
+  console.log(a);
 
   return (
-    <div className="Preview">
+    <div className={`Preview${a.name}`}>
       <div className="Preview-Container">
         <div className="content1">
           <div>

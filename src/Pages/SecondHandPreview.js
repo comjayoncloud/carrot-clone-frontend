@@ -6,16 +6,17 @@ import MenuBar from "../Components/MenuBar";
 import { useSelector } from "react-redux";
 
 export default function SecondHandPreview() {
-  const Preview1 = useSelector((state) => state.Preview1);
-  const Preview4 = useSelector((state) => state.Preview2);
-  const Preview3 = useSelector((state) => state.Preview3);
-  console.log(Preview2);
+  const view1 = useSelector((state) => state.view1);
+  const view2 = useSelector((state) => state.view2);
+  const view3 = useSelector((state) => state.view3);
+  const view4 = useSelector((state) => state.view4);
   return (
     <div className="SecondHandPreview">
       <MenuBar />
-      <Preview Preview={Preview1} />
-      {/* <Preview2 Preview2={Preview4} /> */}
-      <Preview Preview={Preview3} />
+      <Preview view={view1} />
+      <Preview2 view={view2} />
+      <Preview view={view3} />
+      <Preview2 view={view4} />
     </div>
   );
 }
