@@ -1,0 +1,76 @@
+.RootFooter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  &-container {
+    display: flex;
+    width: 60%;
+    border-top: 1px solid;
+    border-color: rgb(229, 222, 222);
+    .content1 {
+      width: 68%;
+      padding-top: 25px;
+      &-1 {
+        div {
+          padding-bottom: 5px;
+          span {
+            padding-right: 5px;
+            color: gray;
+            font-size: 14px;
+            b {
+              padding-right: 3px;
+            }
+          }
+        }
+      }
+      &-2 {
+        ul {
+          display: flex;
+          list-style: none;
+          padding-left: 0;
+          li {
+            padding-right: 10px;
+            a {
+              font-size: 13px;
+              text-decoration: none;
+              color: gray;
+            }
+          }
+        }
+      }
+      &-3 {
+        ul {
+          display: flex;
+          list-style: none;
+          padding-left: 0;
+          li {
+            padding-right: 10px;
+            a {
+              text-decoration: none;
+              font-size: 13px;
+              color: gray;
+            }
+          }
+        }
+      }
+    }
+    .content2 {
+      width: 32%;
+      padding-right: 15%;
+      padding-top: 15px;
+
+      &-1 {
+        nav {
+          display: flex;
+          div {
+            height: 50px;
+            padding-right: 10px;
+            img {
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

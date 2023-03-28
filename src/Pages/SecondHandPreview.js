@@ -3,6 +3,7 @@ import Preview from "../Components/Preview";
 import Preview2 from "../Components/Preview2";
 import MenuBar from "../Components/MenuBar";
 import NavFooter from "../Components/NavFooter";
+import RootFooter from "../Components/RootFooter";
 import { useSelector } from "react-redux";
 
 export default function SecondHandPreview() {
@@ -18,6 +19,7 @@ export default function SecondHandPreview() {
       <Preview view={view3} />
       <Preview2 view={view4} />
       <NavFooter />
+      <RootFooter />
     </div>
   );
 }

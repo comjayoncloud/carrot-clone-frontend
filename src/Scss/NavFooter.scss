@@ -1,6 +1,9 @@
 .NavFooter {
   width: 100%;
+  border-top: 1px solid;
+  border-color: rgb(229, 222, 222);
   &-Container {
+    padding-top: 40px;
     display: flex;
     width: 100%;
     .Content1 {
