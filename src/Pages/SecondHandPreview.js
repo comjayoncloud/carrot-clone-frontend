@@ -1,4 +1,4 @@
-import "../Scss/SecondHandPreview.scss";
+import "../Scss/Pages/SecondHandPreview.scss";
 import Preview from "../Components/Preview";
 import Preview2 from "../Components/Preview2";
 import MenuBar from "../Components/MenuBar";

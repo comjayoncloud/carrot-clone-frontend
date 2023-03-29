@@ -1,6 +1,6 @@
 import MenuNav from "./MenuNav";
 import SearchBar from "./SearchBar";
-import "../Scss/MenuBar.scss";
+import "../Scss/Components/MenuBar.scss";
 
 export default function MenuBar() {
   const carrot_logo_img =

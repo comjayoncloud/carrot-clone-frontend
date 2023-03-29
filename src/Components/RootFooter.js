@@ -1,4 +1,4 @@
-import "../Scss/RootFooter.scss";
+import "../Scss/Components/RootFooter.scss";
 
 export default function RootFooter() {
   return (

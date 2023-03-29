@@ -1,4 +1,4 @@
-import "../Scss/NavFooter.scss";
+import "../Scss/Components/NavFooter.scss";
 import MenuNav from "./MenuNav";
 export default function NavFooter() {
   return (

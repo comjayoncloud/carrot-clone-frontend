@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import "../Scss/SearchBar.scss";
+import "../Scss/Components/SearchBar.scss";
 
 export default function SearchBar() {
   const form_placeholder = "물품이나 동네를 검색해보세요";

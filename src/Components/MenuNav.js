@@ -1,4 +1,4 @@
-import "../Scss/MenuNav.scss";
+import "../Scss/Components/MenuNav.scss";
 
 export default function MenuNav() {
   return (

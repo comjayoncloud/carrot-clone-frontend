@@ -1,4 +1,4 @@
-import "../Scss/Preview.scss";
+import "../Scss/Components/Preview.scss";
 
 export default function Preview2(props) {
   const a = props.view;
