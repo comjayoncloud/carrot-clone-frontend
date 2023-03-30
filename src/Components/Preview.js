@@ -2,7 +2,6 @@ import "../Scss/Components/Preview.scss";
 
 export default function Preview(props) {
   const a = props.view;
-  console.log(a);
 
   return (
     <div className={`Preview${a.name}`}>
