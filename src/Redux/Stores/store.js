@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { Preview } from "../Slices/previewslice";
+import { Preview } from "../Slices/previewSlice";
 
 export const store = configureStore({
   reducer: {
