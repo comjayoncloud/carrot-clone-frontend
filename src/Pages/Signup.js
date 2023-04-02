@@ -10,7 +10,7 @@ import Row from "react-bootstrap/Row";
 /** 상태관리 */
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { postAsync } from "../Redux/Slices/singupSlice";
+import { signupPost } from "../Redux/Api/signupApi";
 
 /** 페이지이동을 위한 useNavigate*/
 import { useNavigate } from "react-router-dom";
@@ -19,10 +19,12 @@ export default function Signup() {
   const logo =
     "https://dnvefa72aowie.cloudfront.net/karrot-cs/etc/202007/0cf1d10235c37b2635c02719125da37cc1bd632518198b1e1da7f5a364156540.png";
 
+  /** 상태관리 id,password,nickname */
   const [user_id, setId] = useState("");
   const [user_password, setPassword] = useState("");
   const [user_nickname, setNickname] = useState("");
 
+  /** redux */
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -32,7 +34,7 @@ export default function Signup() {
       alert("제대로 입력해주세요");
     } else {
       try {
-        await dispatch(postAsync({ user_id, user_password, user_nickname }));
+        await dispatch(signupPost({ user_id, user_password, user_nickname }));
         alert("회원가입 성공!");
         navigate("/login");
       } catch (error) {

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/** 변수만을 담고있는 Slice */
+
 const view1 = createSlice({
   name: "view1",
   initialState: {
