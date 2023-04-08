@@ -4,6 +4,8 @@ import "../Scss/Pages/Login.scss";
 
 /** 상태관리 */
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginPost } from "../Redux/Api/loginApi";
 
 /** React Bootstrap */
 import Button from "react-bootstrap/Button";
@@ -11,17 +13,25 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
-import { useSelector } from "react-redux";
+/** 페이지 이동 */
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  /** id,password 상태관리 */
   const [user_id, setUserid] = useState("");
-  const [password, setPassword] = useState("");
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
-  const view4 = useSelector((state) => state.view4);
-  console.log(view4);
+  const [user_password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!user_id || !user_password) {
+      alert("아이디와 비밀번호 제대로 입력해주세요");
+    } else {
+      await dispatch(loginPost({ user_id, user_password })).unwrap();
+    }
+  };
   return (
     <div className="Login">
       <MenuBar />
@@ -60,7 +70,7 @@ export default function Login() {
               <Button
                 type="submit"
                 onClick={(e) => {
-                  console.log(e);
+                  navigate("/signup");
                 }}
               >
                 회원가입

@@ -24,21 +24,28 @@ export default function Signup() {
   const [user_password, setPassword] = useState("");
   const [user_nickname, setNickname] = useState("");
 
-  /** redux */
+  /** redux 함수 + 함수 상태관리*/
   const dispatch = useDispatch();
+
+  /** 페이지 이동 */
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (!user_id || !user_password || !user_nickname) {
       alert("제대로 입력해주세요");
     } else {
       try {
-        await dispatch(signupPost({ user_id, user_password, user_nickname }));
-        alert("회원가입 성공!");
+        await dispatch(
+          signupPost({ user_id, user_password, user_nickname })
+        ).unwrap();
+        alert("회원가입에 성공했습니다");
         navigate("/login");
       } catch (error) {
+        alert("회원가입실패 했습니다");
         console.log(error);
+        navigate("/signup");
       }
     }
   };

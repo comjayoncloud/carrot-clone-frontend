@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { signupPost } from "../Api/signupApi";
 
-/** (Api-signupApi)의 signup함수를 추적하기 위함  */
+/** (Api-signupApi)의 signupPost함수를 추적하기 위함  */
 const signupSlice = createSlice({
   name: "post",
   initialState: {
@@ -16,7 +16,6 @@ const signupSlice = createSlice({
       })
       .addCase(signupPost.fulfilled, (state, action) => {
         state.status = "succeeded";
-
         state.posts.push(action.payload);
       })
       .addCase(signupPost.rejected, (state) => {
