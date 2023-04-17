@@ -6,19 +6,16 @@ export default function MenuNav() {
       <nav className="MenuNav-Container">
         <ul>
           <li>
-            <a href="localhost">중고거래</a>
+            <a href="/">중고거래</a>
           </li>
           <li>
-            <a href="localhost">동네가게</a>
+            <a href="/secondhand">중고거래매물</a>
           </li>
           <li>
-            <a href="localhost">알바</a>
+            <a href="/signup">회원가입</a>
           </li>
           <li>
-            <a href="localhost">부동산 직거래</a>
-          </li>
-          <li>
-            <a href="localhost">중고차 직거래</a>
+            <a href="/login">로그인</a>
           </li>
         </ul>
       </nav>

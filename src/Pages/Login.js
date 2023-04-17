@@ -12,11 +12,19 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import Cookies from "js-cookie";
 
 /** 페이지 이동 */
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const token = Cookies.get("token");
+  if (token) {
+    console.log("JWT Token:", token);
+  } else {
+    console.log("No JWT Token found");
+  }
+
   /** id,password 상태관리 */
   const [user_id, setUserid] = useState("");
   const [user_password, setPassword] = useState("");
@@ -29,7 +37,14 @@ export default function Login() {
     if (!user_id || !user_password) {
       alert("아이디와 비밀번호 제대로 입력해주세요");
     } else {
-      await dispatch(loginPost({ user_id, user_password })).unwrap();
+      try {
+        await dispatch(loginPost({ user_id, user_password })).unwrap();
+        alert("로그인에 성공했습니다");
+        // navigate("/secondhand");
+      } catch (error) {
+        alert("로그인에 실패했습니다");
+        console.log(error);
+      }
     }
   };
   return (
@@ -68,7 +83,6 @@ export default function Login() {
             </Form.Group>
             <div className="ButtonContainer">
               <Button
-                type="submit"
                 onClick={(e) => {
                   navigate("/signup");
                 }}

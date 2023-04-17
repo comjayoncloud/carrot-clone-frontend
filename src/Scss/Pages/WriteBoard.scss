@@ -1,0 +1,44 @@
+.WriteBoard {
+  &-Container {
+    padding-top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .form-Container {
+      padding-top: 10%;
+      width: 50%;
+      height: 500px;
+      .form-1 {
+        height: 15%;
+        display: flex;
+        &-1 {
+          width: 10%;
+        }
+        &-2 {
+          width: 90%;
+          height: 90%;
+          font-size: 25px;
+        }
+      }
+      .form-2 {
+        display: flex;
+        height: 60%;
+        &-1 {
+          width: 10%;
+        }
+        &-2 {
+          width: 90%;
+          height: 90%;
+          font-size: 20px;
+        }
+      }
+      .form-3 {
+        &-1 {
+          width: 90%;
+          height: 90%;
+        }
+      }
+    }
+  }
+}
