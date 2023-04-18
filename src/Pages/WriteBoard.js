@@ -8,25 +8,28 @@ import { useDispatch } from "react-redux";
 
 export default function WriteBoard() {
   /** 이미지,글 제목,글 내용 상태관리 */
-  const [selectedFile, setSelectedFile] = useState("");
-  const [subject, setSbuject] = useState();
-  const [content, setContent] = useState();
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [subject, setSbuject] = useState(null);
+  const [content, setContent] = useState(null);
   const dispatch = useDispatch();
 
-  /** s3에 이미지 업로드후 받아옴. */
+  /** 1.s3에 이미지 업로드후 받아옴. */
   const handleFileUpload = async (event) => {
-    if (selectedFile) {
+    if (selectedFile != null && subject != null) {
       const fileUrl = await uploadFile(selectedFile);
       // console.log("File uploaded to:", fileUrl);
       await dbUpload(fileUrl);
     }
     await dbUpload(selectedFile);
+    // alert("내용은 안적더라도 제목은 적어주세요");
+
     event.preventDefault();
   };
-
-  const dbUpload = (fileUrl) => {
+  /** 2. db upload */
+  const dbUpload = async (fileUrl) => {
     try {
-      dispatch(postingPost({ subject, content, fileUrl }));
+      console.log(fileUrl);
+      await dispatch(postingPost({ subject, content, fileUrl }));
     } catch (error) {
       console.log(error);
     }
