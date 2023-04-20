@@ -40,7 +40,7 @@ export default function Login() {
       try {
         await dispatch(loginPost({ user_id, user_password })).unwrap();
         alert("로그인에 성공했습니다");
-        // navigate("/secondhand");
+        navigate("/secondhand");
       } catch (error) {
         alert("로그인에 실패했습니다");
         console.log(error);
