@@ -10,7 +10,8 @@
 
 
 # config
-**src/Aws/s3Config.js
+/src/Aws/s3Config.js
+
 
 # production
 /build

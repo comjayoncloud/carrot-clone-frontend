@@ -8,4 +8,4 @@ const s3 = new AWS.S3({
 
 export default s3;
 
-/** 뭔가 바뀌었음~ test */
+/** 뭔가 바뀌었음~ test 2*/
