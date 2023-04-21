@@ -2,7 +2,7 @@ import MenuBar from "../Components/MenuBar";
 import "../Scss/Pages/WriteBoard.scss";
 import { Form, Button } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
-import { uploadFile } from "../Aws/s3Upload";
+import { uploadFiletoS3 } from "../Aws/s3Upload";
 import { postingPost } from "../Redux/Api/postingApi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +33,7 @@ export default function WriteBoard() {
       alert("제목과 가격은 꼭 적어주세요.");
     } else {
       if (selectedFile != null) {
-        const fileUrl = await uploadFile(selectedFile);
+        const fileUrl = await uploadFiletoS3(selectedFile);
         dispatch(postingPost({ subject, content, fileUrl, price }));
         navigate("/secondhand");
       } else {
@@ -93,3 +93,20 @@ export default function WriteBoard() {
     </div>
   );
 }
+/** 1. post to DB  */
+const uploadHandling = async (event) => {
+  if (subject == null || price == null) {
+    alert("제목과 가격은 꼭 적어주세요.");
+  } else {
+    if (selectedFile != null) {
+      const fileUrl = await uploadFile(selectedFile);
+      dispatch(postingPost({ subject, content, fileUrl, price }));
+      navigate("/secondhand");
+    } else {
+      dispatch(postingPost({ subject, content, fileUrl, price }));
+
+      console.log("ㅇㅇ;");
+      navigate("/");
+    }
+  }
+};

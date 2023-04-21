@@ -1,6 +1,6 @@
 import s3 from "./s3Config";
 
-export async function uploadFile(file) {
+export async function uploadFiletoS3(file) {
   const fileName = file.name;
   const fileType = file.type;
 
