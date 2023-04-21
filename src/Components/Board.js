@@ -6,23 +6,25 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
+import useCookieValue from "../Customhook/trackingCookie";
+
 export default function Board() {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    !!Cookies.get("token")
-  );
-  useEffect(() => {
-    function onCookieChange() {
-      const jwt = Cookies.get("token");
-      console.log(jwt);
-      setIsAuthenticated(!!jwt);
-    }
+  const token = Cookies.get("token");
+  const [isToken, setIsToken] = useState(false);
+  const cookieValue = useCookieValue("token", 1000 * 600);
 
-    window.addEventListener("storage", onCookieChange);
-    return () => {
-      window.removeEventListener("storage", onCookieChange);
-    };
-  }, []);
+  useEffect(() => {
+    setIsToken(token !== undefined);
+  }, [token]);
+
+  useEffect(() => {
+    if (cookieValue === undefined) {
+      alert("글쓰기 기능을 사용하려면 다시 로그인해주세요");
+      navigate("/");
+    }
+  });
+
   const a = {
     img: "https://dnvefa72aowie.cloudfront.net/origin/article/202303/753695579fb1e25ac280f3174e4b513c978f3127df6a3bc9e8463aaae836e7ba.jpg?q=82&s=300x300&t=crop",
     subject: "컴퓨터",
@@ -36,16 +38,15 @@ export default function Board() {
     price: "100,000",
     view: "62",
   };
-
   return (
     <div className="Board">
       <div className="Board-Container">
         <div className="content1"> 중고거래 매물</div>
-        {isAuthenticated && (
+        {isToken && (
           <div>
             <button
               onClick={() => {
-                navigate("/secondHand/write");
+                navigate("/secondHand/writeboard");
               }}
             >
               글쓰기
@@ -66,3 +67,17 @@ export default function Board() {
     </div>
   );
 }
+
+// const [isAuthenticated, setIsAuthenticated] = useState(!!token);
+// useEffect(() => {
+//   function onCookieChange() {
+//     const jwt = Cookies.get("token");
+//     console.log(jwt);
+//     setIsAuthenticated(!!jwt);
+//   }
+
+//   window.addEventListener("storage", onCookieChange);
+//   return () => {
+//     window.removeEventListener("storage", onCookieChange);
+//   };
+// }, [token]);

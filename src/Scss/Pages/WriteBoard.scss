@@ -34,9 +34,15 @@
         }
       }
       .form-3 {
+        height: 10%;
+        display: flex;
+
         &-1 {
+          width: 10%;
+        }
+        &-2 {
           width: 90%;
-          height: 90%;
+          height: 30%;
         }
       }
     }
