@@ -8,6 +8,10 @@
 # testing
 /coverage
 
+
+# config
+**src/Aws/s3Config.js
+
 # production
 /build
 
