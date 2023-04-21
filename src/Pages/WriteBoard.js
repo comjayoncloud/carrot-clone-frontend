@@ -19,6 +19,7 @@ export default function WriteBoard() {
   const navigate = useNavigate();
   const cookieValue = useCookieValue("token", 1000 * 600);
 
+  /** 0. cookie tracking */
   useEffect(() => {
     if (cookieValue === undefined) {
       alert("로그인을 다시 해주세요");
@@ -26,26 +27,20 @@ export default function WriteBoard() {
     }
   });
 
-  const upload = async (subject, content, fileUrl, price) => {
-    try {
-      await dispatch(postingPost({ subject, content, fileUrl, price }));
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  };
-  /** 파일이 있을시 s3업로드 먼저후 url과 함께 dbUpload실행. */
+  /** 1. post to DB  */
   const uploadHandling = async (event) => {
     if (subject == null || price == null) {
       alert("제목과 가격은 꼭 적어주세요.");
     } else {
       if (selectedFile != null) {
-        const fileUrl = setfileUrl(await uploadFile(selectedFile));
-        await upload(subject, content, fileUrl, price);
+        const fileUrl = await uploadFile(selectedFile);
+        dispatch(postingPost({ subject, content, fileUrl, price }));
         navigate("/secondhand");
       } else {
-        await upload(subject, content, fileUrl, price);
-        navigate("/secondhand");
+        dispatch(postingPost({ subject, content, fileUrl, price }));
+
+        console.log("ㅇㅇ;");
+        navigate("/");
       }
     }
   };
