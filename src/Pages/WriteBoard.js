@@ -38,9 +38,7 @@ export default function WriteBoard() {
         navigate("/secondhand");
       } else {
         dispatch(postingPost({ subject, content, fileUrl, price }));
-
-        console.log("ㅇㅇ;");
-        navigate("/");
+        navigate("/secondhand");
       }
     }
   };
@@ -93,20 +91,3 @@ export default function WriteBoard() {
     </div>
   );
 }
-/** 1. post to DB  */
-const uploadHandling = async (event) => {
-  if (subject == null || price == null) {
-    alert("제목과 가격은 꼭 적어주세요.");
-  } else {
-    if (selectedFile != null) {
-      const fileUrl = await uploadFile(selectedFile);
-      dispatch(postingPost({ subject, content, fileUrl, price }));
-      navigate("/secondhand");
-    } else {
-      dispatch(postingPost({ subject, content, fileUrl, price }));
-
-      console.log("ㅇㅇ;");
-      navigate("/");
-    }
-  }
-};
