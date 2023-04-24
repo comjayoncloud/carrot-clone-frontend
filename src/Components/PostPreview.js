@@ -7,16 +7,13 @@ export default function PostPreview(props) {
     <div className="PostPreview">
       <Nav>
         <Nav.Item>
-          <Nav.Link href="/signup">
-            <div>
-              <div className="postimg">
-                <img src={view.post_img} alt="사진" />
-              </div>
-              <div className="postinfo">
-                <div className="subject">{view.post_subject}</div>
-                <div className="price">{view.post_price}</div>
-                {/* <div className="view">{view.post_view}</div> */}
-              </div>
+          <Nav.Link href="/secondhand">
+            <div className="postimg">
+              <img src={view.post_img} alt="사진" />
+            </div>
+            <div className="postinfo">
+              <div className="subject">{view.post_subject}</div>
+              <div className="price">{view.post_price}</div>
             </div>
           </Nav.Link>
         </Nav.Item>

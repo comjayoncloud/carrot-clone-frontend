@@ -5,8 +5,10 @@ import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import useCookieValue from "../Customhook/trackingCookie";
 import { getPostDbdata } from "../Redux/Api/getPostdataApi";
-
+import Pagination from "react-bootstrap/Pagination";
 import { useDispatch } from "react-redux";
+
+import { Hello } from "../Components/MyPagination";
 export default function Board() {
   const navigate = useNavigate();
 
@@ -39,8 +41,39 @@ export default function Board() {
 
     fetchData();
   }, [dispatch]);
-  const a = console.log("ㅎㅇ");
-  /** img == post_img , price == post_pirce , sbuject == post_subject */
+
+  /** Pagination */
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+  const totalPages = Math.ceil((data ? data.length : 0) / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const paginationBasic = (
+    <Pagination>
+      <Pagination.First onClick={() => handlePageChange(1)} />
+      <Pagination.Prev
+        onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+      />
+      {[...Array(totalPages).keys()].map((page) => (
+        <Pagination.Item
+          key={page + 1}
+          active={page + 1 === currentPage}
+          onClick={() => handlePageChange(page + 1)}
+        >
+          {page + 1}
+        </Pagination.Item>
+      ))}
+      <Pagination.Next
+        onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
+      />
+      <Pagination.Last onClick={() => handlePageChange(totalPages)} />
+    </Pagination>
+  );
+
   return (
     <div className="Board">
       <div className="Board-Container">
@@ -58,10 +91,27 @@ export default function Board() {
         )}
         <div className="content2">
           {data &&
-            data.map((data, index) => <PostPreview key={index} view={data} />)}
-          {a}
+            data
+              .slice(indexOfFirstItem, indexOfLastItem)
+              .map((data, index) => <PostPreview key={index} view={data} />)}
         </div>
+        {/* Render pagination component */}
+        {paginationBasic}
       </div>
     </div>
   );
+}
+
+{
+  /* <Pagination>
+          {[...Array(totalPages).keys()].map((page) => (
+            <Pagination.Item
+              key={page + 1}
+              active={page + 1 === currentPage}
+              onClick={() => handlePageChange(page + 1)}
+            >
+              {page + 1}
+            </Pagination.Item>
+          ))}
+        </Pagination> */
 }

@@ -1,19 +1,16 @@
 .PostPreview {
   width: 25%;
   height: 25%;
-  border-bottom: 1px solid;
   border-color: rgb(144, 150, 150);
 
   .nav {
-    width: 80%;
+    width: 100%;
     padding-right: 10px;
+    height: 100%;
     .nav-item {
-      // overflow: hidden;
-      // white-space: nowrap;
-      // text-overflow: ellipsis;
-      a {
-        text-decoration: none;
-      }
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
       .postimg {
         width: 80%;
         img {
@@ -27,9 +24,6 @@
         flex-direction: column;
         padding-bottom: 5%;
 
-        div {
-          padding-bottom: 5px;
-        }
         .subject {
           font-size: 20px;
           color: black;
