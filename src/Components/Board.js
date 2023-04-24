@@ -1,43 +1,46 @@
 import "../Scss/Components/Board.scss";
 import PostPreview from "./PostPreview";
-
 import { useNavigate } from "react-router-dom";
-
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-
 import useCookieValue from "../Customhook/trackingCookie";
+import { getPostDbdata } from "../Redux/Api/getPostdataApi";
 
+import { useDispatch } from "react-redux";
 export default function Board() {
   const navigate = useNavigate();
+
+  /** token check */
   const token = Cookies.get("token");
   const [isToken, setIsToken] = useState(false);
-  const cookieValue = useCookieValue("token", 1000 * 600);
-
   useEffect(() => {
     setIsToken(token !== undefined);
   }, [token]);
 
+  /** cookie check */
+  const cookieValue = useCookieValue("token", 1000 * 60000);
   useEffect(() => {
     if (cookieValue === undefined) {
-      alert("글쓰기 기능을 사용하려면 다시 로그인해주세요");
+      alert("중고거래 매물 페이지를 이용하려면 로그인을 해주세요");
       navigate("/");
     }
   });
 
-  const a = {
-    img: "https://dnvefa72aowie.cloudfront.net/origin/article/202303/753695579fb1e25ac280f3174e4b513c978f3127df6a3bc9e8463aaae836e7ba.jpg?q=82&s=300x300&t=crop",
-    subject: "컴퓨터",
-    price: "10,000원",
-    view: "32",
-  };
+  /** get post data */
+  const dispatch = useDispatch();
+  const [data, setData] = useState("");
+  useEffect(() => {
+    console.log("board의 useEffect called");
+    const fetchData = async () => {
+      const resultAction = await dispatch(getPostDbdata());
+      const resultData = resultAction.payload;
+      setData(resultData);
+    };
 
-  const b = {
-    img: "https://dnvefa72aowie.cloudfront.net/origin/article/202303/7c0a3c3645abc9f767d9b437449edff4d0e1aa472b1483c45b26d01d93c3965d.jpg?q=82&s=300x300&t=crop",
-    subject: "아이폰14pro",
-    price: "100,000",
-    view: "62",
-  };
+    fetchData();
+  }, [dispatch]);
+  const a = console.log("ㅎㅇ");
+  /** img == post_img , price == post_pirce , sbuject == post_subject */
   return (
     <div className="Board">
       <div className="Board-Container">
@@ -54,30 +57,11 @@ export default function Board() {
           </div>
         )}
         <div className="content2">
-          <PostPreview view={a} />
-          <PostPreview view={b} />
-          <PostPreview view={a} />
-          <PostPreview view={b} />
-          <PostPreview view={a} />
-          <PostPreview view={b} />
-          <PostPreview view={a} />
-          <PostPreview view={b} />
+          {data &&
+            data.map((data, index) => <PostPreview key={index} view={data} />)}
+          {a}
         </div>
       </div>
     </div>
   );
 }
-
-// const [isAuthenticated, setIsAuthenticated] = useState(!!token);
-// useEffect(() => {
-//   function onCookieChange() {
-//     const jwt = Cookies.get("token");
-//     console.log(jwt);
-//     setIsAuthenticated(!!jwt);
-//   }
-
-//   window.addEventListener("storage", onCookieChange);
-//   return () => {
-//     window.removeEventListener("storage", onCookieChange);
-//   };
-// }, [token]);

@@ -7,6 +7,7 @@ import RootFooter from "../Components/RootFooter";
 import { useSelector } from "react-redux";
 
 export default function SecondHandPreview() {
+  /** use React-redux store */
   const view1 = useSelector((state) => state.view1);
   const view2 = useSelector((state) => state.view2);
   const view3 = useSelector((state) => state.view3);

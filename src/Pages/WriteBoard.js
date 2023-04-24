@@ -17,7 +17,7 @@ export default function WriteBoard() {
   const [fileUrl, setfileUrl] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cookieValue = useCookieValue("token", 1000 * 600);
+  const cookieValue = useCookieValue("token", 1000 * 10000);
 
   /** 0. cookie tracking */
   useEffect(() => {
@@ -29,17 +29,12 @@ export default function WriteBoard() {
 
   /** 1. post to DB  */
   const uploadHandling = async (event) => {
-    if (subject == null || price == null) {
-      alert("제목과 가격은 꼭 적어주세요.");
+    if (subject == null || price == null || selectedFile == null) {
+      alert("제목, 가격, 사진은 꼭 입력해주세요.");
     } else {
-      if (selectedFile != null) {
-        const fileUrl = await uploadFiletoS3(selectedFile);
-        dispatch(postingPost({ subject, content, fileUrl, price }));
-        navigate("/secondhand");
-      } else {
-        dispatch(postingPost({ subject, content, fileUrl, price }));
-        navigate("/secondhand");
-      }
+      const fileUrl = await uploadFiletoS3(selectedFile);
+      dispatch(postingPost({ subject, content, fileUrl, price }));
+      navigate("/secondhand");
     }
   };
 

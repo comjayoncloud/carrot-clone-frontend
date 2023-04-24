@@ -6,6 +6,7 @@ import WriteBoard from "./Pages/WriteBoard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+  console.log("app called");
   return (
     <div className="App">
       <BrowserRouter>

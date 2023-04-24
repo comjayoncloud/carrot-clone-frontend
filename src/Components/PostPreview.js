@@ -10,12 +10,12 @@ export default function PostPreview(props) {
           <Nav.Link href="/signup">
             <div>
               <div className="postimg">
-                <img src={view.img} alt="사진" />
+                <img src={view.post_img} alt="사진" />
               </div>
               <div className="postinfo">
-                <div className={"subject"}>{view.subject}</div>
-                <div className="price">{view.price}</div>
-                <div className="view">{view.view}</div>
+                <div className="subject">{view.post_subject}</div>
+                <div className="price">{view.post_price}</div>
+                {/* <div className="view">{view.post_view}</div> */}
               </div>
             </div>
           </Nav.Link>
