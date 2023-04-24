@@ -95,23 +95,8 @@ export default function Board() {
               .slice(indexOfFirstItem, indexOfLastItem)
               .map((data, index) => <PostPreview key={index} view={data} />)}
         </div>
-        {/* Render pagination component */}
         {paginationBasic}
       </div>
     </div>
   );
-}
-
-{
-  /* <Pagination>
-          {[...Array(totalPages).keys()].map((page) => (
-            <Pagination.Item
-              key={page + 1}
-              active={page + 1 === currentPage}
-              onClick={() => handlePageChange(page + 1)}
-            >
-              {page + 1}
-            </Pagination.Item>
-          ))}
-        </Pagination> */
 }
